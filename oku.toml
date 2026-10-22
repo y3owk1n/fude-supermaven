@@ -1,0 +1,10 @@
+# The toolchain to build the plugin. `oku sync` installs it, `oku allow` lets
+# the shell hook put it on PATH here. The packages are fude's own definitions.
+[runtimes]
+go = { ref = "github:y3owk1n/fude#.oku/go.toml", version = "~1.27" }
+
+[packages]
+go = { ref = "github:y3owk1n/fude#.oku/go.toml", version = "~1.27" }
+# tinygo builds the plugin into .wasm, and runs binaryen's wasm-opt on it.
+tinygo = { ref = "github:y3owk1n/fude#.oku/tinygo.toml", version = "^0.43" }
+binaryen = { ref = "github:y3owk1n/fude#.oku/binaryen.toml" }

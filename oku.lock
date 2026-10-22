@@ -1,0 +1,48 @@
+# Written by oku. Commit this file, and change it with oku commands only.
+
+include = []
+
+[[package]]
+name = 'binaryen'
+ref = 'github:y3owk1n/fude#.oku/binaryen.toml'
+commit = '5abac4789d2bf8f675c48880f798640b5782fe06'
+manifest_sha256 = '0ca832aee0604733c3a3cbb9d002d43c15834de8a87dd4ce640a4a1dddf2302b'
+version = '133'
+tag = 'version_133'
+
+[package.platform]
+[package.platform.darwin-arm64]
+strategy = 'artifact'
+url = 'https://github.com/WebAssembly/binaryen/releases/download/version_133/binaryen-version_133-arm64-macos.tar.gz'
+sha256 = 'ad66da82ac13f163e424b1643f16c6dfcccc98b5966296b43e52d3cab04f84a8'
+verified = 'checksum-file'
+
+[[package]]
+name = 'go'
+ref = 'github:y3owk1n/fude#.oku/go.toml'
+commit = 'e98dbde6bcab40969c27d06d1e0a70d30131ef7f'
+manifest_sha256 = '4e86afdeda4063d8c7cc15bedb7857112496c03e8608295229e30bd61a6dd9d8'
+version = '1.27.3'
+tag = 'go1.27.3'
+
+[package.platform]
+[package.platform.darwin-arm64]
+strategy = 'artifact'
+url = 'https://dl.google.com/go/go1.27.3.darwin-arm64.tar.gz'
+sha256 = 'dd3908cf20959d798c1e06ebe5b72213f0505ce01373b40ce3110975a6cd99c2'
+verified = 'checksum-file'
+
+[[package]]
+name = 'tinygo'
+ref = 'github:y3owk1n/fude#.oku/tinygo.toml'
+commit = '5abac4789d2bf8f675c48880f798640b5782fe06'
+manifest_sha256 = '04dabcfad170880f2d1a5a020e7b9b89faa843fb46a4079ad3da5101c6a39542'
+version = '0.43.0'
+tag = 'v0.43.0'
+
+[package.platform]
+[package.platform.darwin-arm64]
+strategy = 'artifact'
+url = 'https://github.com/tinygo-org/tinygo/releases/download/v0.43.0/tinygo0.43.0.darwin-arm64.tar.gz'
+sha256 = 'f5e0161f212fb69ad4650a4809e3ca66856e184892e80058f0d47abc64151812'
+verified = 'published'

@@ -21,10 +21,17 @@ Add this table to fude's `config.toml` (`fude man config` covers it):
 path = "/path/to/fude-supermaven/fude-supermaven.wasm"
 capabilities = ["buffer.read", "buffer.write", "ui", "process"]
 programs = ["sh"]
+options = { ignore_filetypes = ["markdown", "text"] }
 ```
 
 A relative `path` is read from the folder of `config.toml`, and `~` is not
 expanded. After a rebuild, `:plugin reload` loads the new `.wasm`.
+
+`ignore_filetypes` lists the filetypes the plugin skips. fude 0.3.1 and
+older take no list, so write it there as one string, `"markdown,text"`.
+`:set fude-supermaven.ignore_filetypes markdown` changes it while fude
+runs. fude names the option after the `.wasm` file, so keep the file named
+`fude-supermaven.wasm`.
 
 ## Use
 
@@ -36,6 +43,9 @@ activated, the plugin picks the free tier, as `:SupermavenUseFree` does.
 In insert mode a suggestion shows dim at the cursor, with its other lines
 below. `<Tab>` accepts it, or types a tab when there is none. Leaving
 insert mode clears it.
+
+A file of an ignored filetype gets no suggestions, and the plugin never
+sends its text to `sm-agent`.
 
 ## Check
 

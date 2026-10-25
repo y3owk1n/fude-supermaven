@@ -16,6 +16,9 @@ const (
 	hardSizeLimit       = 10e6
 	maxStateIDRetention = 50
 	suggestionStyle     = "comment"
+	// ignoreOption is ignore_filetypes under the plugin's name, which fude
+	// takes from the .wasm file's name.
+	ignoreOption = "fude-supermaven.ignore_filetypes"
 )
 
 // script runs sm-agent, downloading it first as binary_fetcher.lua does.
@@ -107,6 +110,7 @@ var (
 )
 
 func init() {
+	sdk.Define("ignore_filetypes", "", "filetypes supermaven skips, comma separated, such as markdown,text")
 	sdk.Register(api.Registration{Kind: api.Typed, Name: "<Tab>", Help: "accepts supermaven's suggestion"}, func(c, _, _ int) int {
 		accept(c)
 		return 0
@@ -237,6 +241,10 @@ func onUpdate() {
 	if b.Path == "" {
 		return
 	}
+	if ignored(b.Filetype) {
+		dispose()
+		return
+	}
 	text, err := bufferText()
 	if err != nil {
 		say("Error reading the buffer: " + err.Error())
@@ -258,6 +266,21 @@ func onUpdate() {
 		dispose()
 	}
 	seen = ctx
+}
+
+// ignored reports whether ignore_filetypes lists ft. It reads the option
+// each time, so :set applies at once.
+func ignored(ft string) bool {
+	if ft == "" {
+		return false
+	}
+	v, _ := sdk.Option(ignoreOption)
+	for _, f := range strings.Split(v, ",") {
+		if strings.TrimSpace(f) == ft {
+			return true
+		}
+	}
+	return false
 }
 
 func documentChanged(path, text string) {

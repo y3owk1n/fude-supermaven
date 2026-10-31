@@ -5,34 +5,52 @@ completion, on the free tier, as a fude plugin. It runs `sm-agent`, sends
 it the buffer and the cursor as they change, and shows its completion as
 ghost text.
 
-## Build
+## Install
+
+```sh
+fude plugin add github.com/y3owk1n/fude-supermaven
+```
+
+It needs fude 0.4.0 or later. fude prints what the plugin asks for, and
+once you answer y, installs it and adds this table to `config.toml`
+(`fude man config` covers it):
+
+```toml
+[[plugin]]
+repo = "github.com/y3owk1n/fude-supermaven"
+capabilities = ["buffer.read", "buffer.write", "ui", "process"]
+programs = ["sh"]
+```
+
+Add the filetypes it should skip to that table:
+
+```toml
+options = { ignore_filetypes = ["markdown", "text"] }
+```
+
+- `:set fude-supermaven.ignore_filetypes markdown` changes the list while
+  fude runs.
+- `:plugin update fude-supermaven` updates it to its newest release.
+- `plugins.lock`, beside `config.toml`, pins the commit, so keep it with
+  your config.
+
+## Build from source
 
 ```sh
 oku sync && oku allow   # Go, TinyGo and binaryen, as fude pins them
 fude plugin build       # writes fude-supermaven.wasm
 ```
 
-## Install
-
-Add this table to fude's `config.toml` (`fude man config` covers it):
+To run your build, point the table at the folder in place of `repo`.
+`:plugin reload` builds it again after a change.
 
 ```toml
 [[plugin]]
-path = "/path/to/fude-supermaven/fude-supermaven.wasm"
-capabilities = ["buffer.read", "buffer.write", "ui", "process"]
-programs = ["sh"]
-options = { ignore_filetypes = ["markdown", "text"] }
+path = "~/code/fude-supermaven"
 ```
 
-A relative `path` is read from the folder of `config.toml`, and `~` is not
-expanded. After a rebuild, `:plugin reload` loads the new `.wasm`.
-
-`ignore_filetypes` lists the filetypes the plugin skips. fude 0.3.1 and
-older take no list, so write it there as one string, `"markdown,text"`.
-`:set fude-supermaven.ignore_filetypes markdown` changes it while fude
-runs. The option is named after `fude-supermaven`, the name its `fude.toml`
-gives. fude 0.3.2 and older name it after the `.wasm` file, so keep the
-file named `fude-supermaven.wasm` there.
+Pushing a tag `v*` runs the release workflow, which attaches the
+`fude-supermaven.wasm` that `fude plugin add` installs.
 
 ## Use
 

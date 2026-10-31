@@ -1,0 +1,6 @@
+# The manifest. fude plugin build writes it into the plugin, and
+# fude plugin add grants what it asks for.
+name = "fude-supermaven"
+capabilities = ["buffer.read", "buffer.write", "ui", "process"]
+programs = ["sh"]
+hosts = []

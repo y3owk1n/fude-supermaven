@@ -30,8 +30,9 @@ expanded. After a rebuild, `:plugin reload` loads the new `.wasm`.
 `ignore_filetypes` lists the filetypes the plugin skips. fude 0.3.1 and
 older take no list, so write it there as one string, `"markdown,text"`.
 `:set fude-supermaven.ignore_filetypes markdown` changes it while fude
-runs. fude names the option after the `.wasm` file, so keep the file named
-`fude-supermaven.wasm`.
+runs. The option is named after `fude-supermaven`, the name its `fude.toml`
+gives. fude 0.3.2 and older name it after the `.wasm` file, so keep the
+file named `fude-supermaven.wasm` there.
 
 ## Use
 

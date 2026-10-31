@@ -1,0 +1,30 @@
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+      - uses: acifani/setup-tinygo@v3
+        with:
+          tinygo-version: "0.43.0"
+      - name: Build and attach the plugin
+        env:
+          GH_TOKEN: ${{ github.token }}
+          WASM: ${{ github.event.repository.name }}.wasm
+        run: |
+          curl -fsSL -o fude.zip https://github.com/y3owk1n/fude/releases/latest/download/fude-linux-amd64.zip
+          unzip -q fude.zip -d "$RUNNER_TEMP/fude"
+          "$RUNNER_TEMP/fude/bin/fude" plugin build
+          gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 || gh release create "$GITHUB_REF_NAME" --verify-tag --generate-notes
+          gh release upload "$GITHUB_REF_NAME" "$WASM" --clobber

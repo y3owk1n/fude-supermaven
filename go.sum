@@ -1,8 +1,4 @@
-github.com/y3owk1n/fude/api v0.2.1 h1:M4OfboQTic8hLi0P+tp+zIFijRgNLauZUn1v/GdsgzM=
-github.com/y3owk1n/fude/api v0.2.1/go.mod h1:vW1OYKSx7Ui06wWpW2VwNaG+waU7q1XFZRheSrXHJ+k=
-github.com/y3owk1n/fude/api v0.3.0 h1:RvXA7EceeLtQzOFyMbhRp9BvjyjDhWSLlJYWK8+rGmU=
-github.com/y3owk1n/fude/api v0.3.0/go.mod h1:vW1OYKSx7Ui06wWpW2VwNaG+waU7q1XFZRheSrXHJ+k=
-github.com/y3owk1n/fude/sdk v0.2.1 h1:kHL/zv84pIOoPOXAbWx648+CtWEAhdwiHTybDkyC6dE=
-github.com/y3owk1n/fude/sdk v0.2.1/go.mod h1:8ldUp7oLF99lNNPOfaP1aoa9Hgh8VhJQSlEyccDgFkU=
-github.com/y3owk1n/fude/sdk v0.3.0 h1:BxTICgEkiJDy0dxL4ePYIyKjQmlhQDpV02rAXiIT7Yg=
-github.com/y3owk1n/fude/sdk v0.3.0/go.mod h1:/I+EVl48md0u0L/rFzn2sqRatNM5lZ9ioSkbQ3ibzac=
+github.com/y3owk1n/fude/api v0.4.0 h1:BfIGFpt+pcqnDw1LmbvahU8nffntDO9DfvKjot6sKBk=
+github.com/y3owk1n/fude/api v0.4.0/go.mod h1:vW1OYKSx7Ui06wWpW2VwNaG+waU7q1XFZRheSrXHJ+k=
+github.com/y3owk1n/fude/sdk v0.4.0 h1:+4pHvg/+9QPZhR+lgg1uV+IyfmuedBMDGHQ5SFZRGdA=
+github.com/y3owk1n/fude/sdk v0.4.0/go.mod h1:gbaHgSJVIB1JjsAOwKy4XvcDIwHpQ31haeUaL63o9So=
